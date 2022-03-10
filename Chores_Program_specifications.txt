@@ -1,0 +1,22 @@
+﻿Needed for server side:
+* List of possible chores
+* List of people to choose from for chores
+* Class files for Chore_List and People
+
+
+
+
+
+
+Needed for client side:
+* Path for excel file to load previous selections (not necessary if server is up and running)
+
+
+
+
+How it will work:
+* Jonah will have client program
+* Dan will run server
+* Will be a script that Jonah can run through CMD or Powershell
+* Jonah would need to copy and paste data from list into an excel/sheets file in case of server failure
+*
