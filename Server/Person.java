@@ -100,4 +100,9 @@ public class Person {
         this.pick_up_kitchen += 1;
     }
 
+public static void main(){
+    System.out.println("Hello World!");
 }
+
+}
+
