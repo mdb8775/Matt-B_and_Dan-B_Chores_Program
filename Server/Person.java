@@ -1,7 +1,7 @@
 /**
-Class file for people for chores list.
-Authors: Matt B and Dan B
-Date: March 9 2022
+ * Class file for people for chores list.
+ * Authors: Matt Bliss and Daniel Benedetti
+ * Date: March 9 2022
 **/
 
 public class Person {
@@ -14,6 +14,7 @@ public class Person {
     private int pick_up_lounge;
     private int kitchen_trash;
     private int pick_up_kitchen;
+    private int totalNum;
 
     public Person(String name) {
         this.name = name;
@@ -25,6 +26,7 @@ public class Person {
         this.pick_up_lounge = 0;
         this.kitchen_trash = 0;
         this.pick_up_kitchen = 0;
+        this.totalNum = 0;
     }
 
     /**
@@ -32,6 +34,8 @@ public class Person {
      * for when we need to set the numbers first when using data from CSV file
     **/
 
+
+    //The following functions are all "get" functions since fields are private
     public String getName() {
         return name;
     }
@@ -68,6 +72,18 @@ public class Person {
         return pick_up_kitchen;
     }
 
+    public int getTotalNum() {
+        return totalNum;
+    }
+
+    //end of "get" functions
+
+    //Below are the "set" functions
+
+    //TODO should combine all the increment functions and just pass argument into
+    //  function for which chore we are trying to increment
+
+
     public void incrementEmpty_basement_trash() {
         this.empty_basement_trash += 1;
     }
@@ -100,9 +116,18 @@ public class Person {
         this.pick_up_kitchen += 1;
     }
 
-    public static void main(String[] args){
-        System.out.println("Hello World!");
+    //This function should stay seperate of increment functions since every chore
+    //will need to increment the total num
+    public void setTotalNum() {
+        this.totalNum += 1;
     }
+
+    
+
+    // main to test with
+    // public static void main(String[] args){
+    //     System.out.println("Hello World!");
+    // }
 
 }
 
