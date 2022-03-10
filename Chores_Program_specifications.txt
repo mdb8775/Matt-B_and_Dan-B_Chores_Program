@@ -1,22 +1,43 @@
-﻿Needed for server side:
-* List of possible chores
-* List of people to choose from for chores
-* Class files for Chore_List and People
+﻿NOTE: After consideration, server/client architecture might not work since loading
+a CSV file would require either a file transfer between the two systems.
 
-
-
-
+But, if we want to stick with that, the client would just have to parse the CSV file
+and send over all the info because the server can make Person objects, not the client.
+To do this, best way would probably be to loop through file and send ALL data for each Person
+individually, and have the server keep waiting for data until client sends keyword "DONE".
+The reason for this being that in the future (either for Jonah or other House Managers),
+there may be more or less people available for the chore pool, so the server would have to run accordingly.
 
 
 Needed for client side:
 * Path for excel file to load previous selections (not necessary if server is up and running)
 
 
-
-
-How it will work:
+How program should work:
 * Jonah will have client program
 * Dan will run server
-* Will be a script that Jonah can run through CMD or Powershell
-* Jonah would need to copy and paste data from list into an excel/sheets file in case of server failure
-*
+* Will be a script that Jonah can run through CMD or Powershell (.exe file)
+* Jonah would need to copy and paste data from list into an excel/sheets file in case of server failure (version control)
+* First time, should ask for data anyway since there is already a CSV file created
+* Client will parse through CSV file and send data for each person individually
+* Server will wait for data, and then use data (preferably in a list) to create Person objects
+* Server and client will keep looping, where client will send "DONE" to client, indicating to server that it is ready for the next step
+* Server will calculate the chore list according to the following terms:
+     
+    - Server will first run through total chores (to determine number of chores), and determine the list of 8 people that have to do chores
+    - According to previous list, server will cycle through each chore, finding who has done that particular chore the fewest
+    - Once someone has been chosen for the chorse, they will be removed from the first list and placed in offical c_list
+    - If there is a tie of any kind during the process, the greater pin number is selected (lowest pin in logical case)
+
+* Once the list is completed, server will send list back to client, where the client will format list as follows:
+
+    Chore1: PersonA
+    Chore2: PersonB
+    Chore3: PersonC
+    Chore4: PersonD
+    Chore5: PersonE
+    Chore6: PersonF
+    Chore7: PersonG
+    Chore8: PersonH
+
+* The reason for formatting above is so that House Manager can copy and paste list into FaceBook with minimal formatting changes
