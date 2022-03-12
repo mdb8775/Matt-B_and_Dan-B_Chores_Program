@@ -24,9 +24,9 @@ public class Chores_Client {
 
         ArrayList<Object> list;
 
-        String answer = inputScanner.next();
-        System.out.println();
-        if(answer == "y") {
+        String answer = inputScanner.next().strip();
+        
+        if(answer.equals("y")) {
             System.out.print("Path of the CSV file: ");
             answer = inputScanner.next();
 
