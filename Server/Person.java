@@ -16,6 +16,7 @@ public class Person {
     private int pick_up_kitchen;
     private int totalNum;
 
+    //Initial Constructor if no data is given other than name
     public Person(String name) {
         this.name = name;
         this.empty_basement_trash = 0;
@@ -29,10 +30,23 @@ public class Person {
         this.totalNum = 0;
     }
 
-    /**
-     * TODO should definitely put in a constructor here to set all the variables
-     * for when we need to set the numbers first when using data from CSV file
-    **/
+    //Constructor for use when numbers are given from client using CSV file
+    public Person(String name, int empty_basement_trash_num, int sweep_mop_basement_num,
+                int pick_up_basement_trash_num, int lounge_vacumming_num, int empty_lounge_trash_num,
+                int pick_up_lounge_num, int kitchen_trash_num, int pick_up_kitchen_num, int totalNum) {
+
+        this.name = name;
+        this.empty_basement_trash = empty_basement_trash_num;
+        this.sweep_and_mop_basement = sweep_mop_basement_num;
+        this.pick_up_basement_trash = pick_up_basement_trash_num;
+        this.lounge_vacumming = lounge_vacumming_num;
+        this.empty_lounge_trash = empty_lounge_trash_num;
+        this.pick_up_lounge = pick_up_lounge_num;
+        this.kitchen_trash = kitchen_trash_num;
+        this.pick_up_kitchen = pick_up_kitchen_num;
+        this.totalNum = totalNum;
+
+    }
 
 
     //The following functions are all "get" functions since fields are private
@@ -78,51 +92,37 @@ public class Person {
 
     //end of "get" functions
 
-    //Below are the "set" functions
-
-    //TODO should combine all the increment functions and just pass argument into
-    //  function for which chore we are trying to increment
-
-
-    public void incrementEmpty_basement_trash() {
-        this.empty_basement_trash += 1;
-    }
-
-    public void incrementSweep_and_mop_basement() {
-        this.sweep_and_mop_basement += 1;
-    }
-
-    public void incrementPick_up_basement_trash() {
-        this.pick_up_basement_trash += 1;
-    }
-
-    public void incrementLounge_vacumming() {
-        this.lounge_vacumming += 1;
-    }
-
-    public void incrementEmpty_lounge_trash() {
-        this.empty_lounge_trash += 1;
-    }
-
-    public void incrementPick_up_lounge() {
-        this.pick_up_lounge += 1;
-    }
-
-    public void incrementKitchen_trash() {
-        this.kitchen_trash += 1;
-    }
-
-    public void incrementPick_up_kitchen() {
-        this.pick_up_kitchen += 1;
-    }
-
-    //This function should stay seperate of increment functions since every chore
-    //will need to increment the total num
-    public void setTotalNum() {
+    //Below is the "set" function
+    public void incrementChore(String chore) {
+        
+        switch (chore) {
+            case "Empty Basement Trash":
+                this.empty_basement_trash += 1;
+                break;
+            case "Sweep and Mop Basement":
+                this.sweep_and_mop_basement += 1;
+                break;
+            case "Pick up Basement Trash":
+                this.pick_up_basement_trash += 1;
+                break;
+            case "Lounge Vacumming":
+                this.lounge_vacumming += 1;
+                break;
+            case "Empty Lounge Trash":
+                this.empty_lounge_trash += 1;
+                break;
+            case "Pick up Lounge":
+                this.pick_up_lounge += 1;
+                break;
+            case "Kitchen Trash":
+                this.kitchen_trash += 1;
+                break;
+            case "Pick up Kitchen":
+                this.pick_up_kitchen += 1;
+                break;
+        }
         this.totalNum += 1;
     }
-
-    
 
     // main to test with
     // public static void main(String[] args){
