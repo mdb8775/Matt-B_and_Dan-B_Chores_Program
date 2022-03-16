@@ -9,9 +9,9 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Chores_Client {
+public class Chores_Main {
 
-    public static ArrayList<Person> parseSheet(String filename) {
+    private static ArrayList<Person> parseSheet(String filename) {
         ArrayList<Person> list = new ArrayList<>();
 
         //TODO will need to do this after every row
@@ -28,14 +28,10 @@ public class Chores_Client {
      * 
      * @param people - list of all brothers that will be resized to only those that 
      *                 will be doing chores this week
-     * @return - list of brothers to do chores this week
      */
-    public static ArrayList<Person> chooseBrothers(ArrayList<Person> people) {
+    private static void chooseBrothers(ArrayList<Person> people) {
         //TODO
 
-
-
-        return people;
     }
 
     /**
@@ -45,7 +41,7 @@ public class Chores_Client {
      * @param people - list of brothers chosen for chores this week
      * @return - list of chores and the brothers assigned to them
      */
-    public static Chores_List makeChoreList(ArrayList<Person> people) {
+    private static Chores_List makeChoreList(ArrayList<Person> people) {
         Chores_List c_list = new Chores_List();
         //TODO
 
@@ -57,11 +53,17 @@ public class Chores_Client {
         Scanner inputScanner = new Scanner(System.in);
 
         ArrayList<Person> people_list;
+        Chores_List c_list;
 
         System.out.print("Path of the CSV file: ");
         String filename = inputScanner.next();
 
         people_list = parseSheet(filename);
+
+        chooseBrothers(people_list);
+        
+        c_list = makeChoreList(people_list);
+
 
         //TODO Format and print list
 
