@@ -84,38 +84,6 @@ public class Person implements Comparable <Person>{
 
     //end of "get" functions
 
-    //Below is the "set" function
-    public void incrementChore(String chore) {
-        
-        switch (chore) {
-            case "Empty Basement Trash":
-                this.empty_basement_trash += 1;
-                break;
-            case "Sweep and Mop Basement":
-                this.sweep_and_mop_basement += 1;
-                break;
-            case "Pick up Basement Trash":
-                this.pick_up_basement_trash += 1;
-                break;
-            case "Lounge Vacumming":
-                this.lounge_vacumming += 1;
-                break;
-            case "Empty Lounge Trash":
-                this.empty_lounge_trash += 1;
-                break;
-            case "Pick up Lounge":
-                this.pick_up_lounge += 1;
-                break;
-            case "Kitchen Trash":
-                this.kitchen_trash += 1;
-                break;
-            case "Pick up Kitchen":
-                this.pick_up_kitchen += 1;
-                break;
-        }
-        this.totalNum += 1;
-    }
-
     @Override
     public String toString() {
         return getName();

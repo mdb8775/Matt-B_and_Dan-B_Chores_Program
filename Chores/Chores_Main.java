@@ -15,9 +15,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Chores_Main {
 
+    /**
+     * This function parses the CSV file and makes a list of all the people in the spreadsheet
+     * @param filename - name of CSV file
+     * @return - list of brothers
+     */
     private static ArrayList<Person> parseSheet(String filename) {
         ArrayList<Person> list = new ArrayList<>();
 
@@ -29,6 +33,7 @@ public class Chores_Main {
             String fields = reader.readLine();
             String line = fields; //set lines equal to fields first for while loop before reading next line
             
+            //the following variables are all for storing values of fields in the spreadsheet
             String[] tokens;
             Person p;
             String name; 
@@ -44,7 +49,7 @@ public class Chores_Main {
             int totalNum;
 
 
-            while((line = reader.readLine()) != null) {  
+            while((line = reader.readLine()) != null) {  //reads next line and checks if it's null
                 tokens = line.split(",");
 
                 name = tokens[0];
@@ -74,10 +79,7 @@ public class Chores_Main {
 
     /**
      * This function takes the list of all brothers in the CSV file and shrinks
-     * the list down so that the list only contains those chosen for chores this week.
-     * This list will then be used in the next function, where all brothers in this list
-     * will then be assigned a chore.
-     * 
+     * the list down so that the list only contains those that can be chosen for chores this week.
      * @param people - list of all brothers that will be resized to only those that 
      *                 will be doing chores this week
      */
@@ -91,6 +93,13 @@ public class Chores_Main {
         System.out.println(people);
     }
 
+    /**
+     * This function is simply a helper function to automate calling get functions
+     * while iterating through the list of chores
+     * @param i - index of previous function used for switch case
+     * @param p - person to call get function on
+     * @return - return the number returned from the get function
+     */
     public static int callGetter(int i, Person p) {
         int num = 0;
 
@@ -117,7 +126,6 @@ public class Chores_Main {
     /**
      * This function takes a list of selected brothers and assigns them a chore,
      * returning the list of chores to be printed later to terminal.
-     * 
      * @param people - list of brothers chosen for chores this week
      * @return - list of chores and the brothers assigned to them
      */
@@ -126,8 +134,6 @@ public class Chores_Main {
                             "Lounge Trash","Lounge Vacuum","Lounge Pickup","Kitchen Trash",
                             "Kitchen Pickup"};
 
-        //For each chore, need to iterate over list of people and determine who has done chore least
-        //If multiple multiple have the minimum number, just need to compare people since lowest pin number is least
         int min = 0;
         Person possible;
         
@@ -163,6 +169,10 @@ public class Chores_Main {
         }
     }
 
+    /**
+     * Mian function that asks user for the FULL path 
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
 
@@ -173,7 +183,14 @@ public class Chores_Main {
         System.out.print("Path of the CSV file: ");
         String filename = inputScanner.nextLine().strip();
 
-        people_list = parseSheet(filename);
+        if(filename.charAt(0) == ('\"')){
+            String[] words = filename.split("\"");
+            people_list = parseSheet(words[1]);
+            
+        } else {
+            people_list = parseSheet(filename);
+        }
+        
 
         chooseBrothers(people_list, numOfChores);
         
