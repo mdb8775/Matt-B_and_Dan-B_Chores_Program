@@ -8,11 +8,34 @@
  */
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class Chores_Main {
 
     private static ArrayList<Person> parseSheet(String filename) {
         ArrayList<Person> list = new ArrayList<>();
+
+        try {
+            FileReader fr = new FileReader(filename);
+            BufferedReader reader = new BufferedReader(fr);
+
+            String fields = reader.readLine();
+            String line = reader.readLine();
+
+
+
+
+
+
+            fr.close();
+            reader.close();
+
+        } catch(IOException e) {
+            System.err.println(filename + " could not be found.");
+        }
 
         //TODO will need to do this after every row
             //list.add(new Person);

@@ -6,6 +6,7 @@
 
 public class Person {
     private String name;
+    private int pin;
     private int empty_basement_trash;
     private int sweep_and_mop_basement;
     private int pick_up_basement_trash;
@@ -16,26 +17,13 @@ public class Person {
     private int pick_up_kitchen;
     private int totalNum;
 
-    //Initial Constructor if no data is given other than name
-    public Person(String name) {
-        this.name = name;
-        this.empty_basement_trash = 0;
-        this.sweep_and_mop_basement = 0;
-        this.pick_up_basement_trash = 0;
-        this.lounge_vacumming = 0;
-        this.empty_lounge_trash = 0;
-        this.pick_up_lounge = 0;
-        this.kitchen_trash = 0;
-        this.pick_up_kitchen = 0;
-        this.totalNum = 0;
-    }
-
     //Constructor for use when numbers are given from client using CSV file
-    public Person(String name, int empty_basement_trash_num, int sweep_mop_basement_num,
+    public Person(String name, int pin, int empty_basement_trash_num, int sweep_mop_basement_num,
                 int pick_up_basement_trash_num, int lounge_vacumming_num, int empty_lounge_trash_num,
                 int pick_up_lounge_num, int kitchen_trash_num, int pick_up_kitchen_num, int totalNum) {
 
         this.name = name;
+        this.pin = pin;
         this.empty_basement_trash = empty_basement_trash_num;
         this.sweep_and_mop_basement = sweep_mop_basement_num;
         this.pick_up_basement_trash = pick_up_basement_trash_num;
@@ -52,6 +40,10 @@ public class Person {
     //The following functions are all "get" functions since fields are private
     public String getName() {
         return name;
+    }
+
+    public int getPin() {
+        return pin;
     }
 
     public int getEmpty_basement_trash() {
