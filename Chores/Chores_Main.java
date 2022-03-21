@@ -23,23 +23,49 @@ public class Chores_Main {
             BufferedReader reader = new BufferedReader(fr);
 
             String fields = reader.readLine();
-            String line = reader.readLine();
+            String line = fields; //set lines equal to fields first for while loop before reading next line
+            
+            String[] tokens;
+            Person p;
+            String name; 
+            int pin;
+            int empty_basement_trash_num;
+            int sweep_mop_basement_num;
+            int pick_up_basement_trash_num;
+            int lounge_vacumming_num;
+            int empty_lounge_trash_num;
+            int pick_up_lounge_num;
+            int kitchen_trash_num;
+            int pick_up_kitchen_num;
+            int totalNum;
 
 
+            while(line != null) {
+                line = reader.readLine();
+                tokens = line.split(",");
 
+                name = tokens[0];
+                pin = Integer.parseInt(tokens[1]);
+                empty_basement_trash_num = Integer.parseInt(tokens[2]);
+                sweep_mop_basement_num = Integer.parseInt(tokens[3]);
+                pick_up_basement_trash_num = Integer.parseInt(tokens[4]);
+                lounge_vacumming_num = Integer.parseInt(tokens[5]);
+                empty_lounge_trash_num = Integer.parseInt(tokens[6]);
+                pick_up_lounge_num = Integer.parseInt(tokens[7]);
+                kitchen_trash_num = Integer.parseInt(tokens[8]);
+                pick_up_kitchen_num = Integer.parseInt(tokens[9]);
+                totalNum = Integer.parseInt(tokens[10]);
 
-
-
+                p = new Person(name, pin, empty_basement_trash_num, sweep_mop_basement_num, pick_up_basement_trash_num, lounge_vacumming_num, empty_lounge_trash_num, pick_up_lounge_num, kitchen_trash_num, pick_up_kitchen_num, totalNum);
+            
+                list.add(p);
+            }
             fr.close();
             reader.close();
 
         } catch(IOException e) {
             System.err.println(filename + " could not be found.");
         }
-
-        //TODO will need to do this after every row
-            //list.add(new Person);
-
         return list;
     }
 
