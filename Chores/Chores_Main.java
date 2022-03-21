@@ -43,8 +43,7 @@ public class Chores_Main {
             int totalNum;
 
 
-            while(line != null) {
-                line = reader.readLine();
+            while((line = reader.readLine()) != null) {  
                 tokens = line.split(",");
 
                 name = tokens[0];

@@ -116,6 +116,11 @@ public class Person {
         this.totalNum += 1;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
     // main to test with
     // public static void main(String[] args){
     //     System.out.println("Hello World!");
