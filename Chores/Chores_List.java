@@ -56,4 +56,16 @@ public class Chores_List {
     public Person getPick_up_kitchen() {
         return pick_up_kitchen;
     }
+
+    @Override
+    public String toString() {
+        return "Empty Basement Trash: " + empty_basement_trash +
+                "\nSweep and Mop Basement: " + sweep_and_mop_basement +
+                "\nPick Up Basement: " + pick_up_basement_trash +
+                "\nLounge Trash: " + empty_lounge_trash +
+                "\nLounge Vacuum: " + lounge_vacumming +
+                "\nLounge Pickup: " + pick_up_lounge +
+                "\nKitchen Trash: " + kitchen_trash +
+                "\nKitchen Pickup: " + pick_up_kitchen; 
+    }
 }

@@ -92,19 +92,15 @@ public class Chores_Main {
      * @param people - list of brothers chosen for chores this week
      * @return - list of chores and the brothers assigned to them
      */
-    private static Chores_List makeChoreList(ArrayList<Person> people) {
-        Chores_List c_list = new Chores_List();
-        //TODO
-
-
-        return c_list;
+    private static void makeChoreList(ArrayList<Person> people) {
+        //TODO list already made, just set people to list
     }
 
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
 
         ArrayList<Person> people_list;
-        Chores_List c_list;
+        Chores_List c_list = new Chores_List();
 
         System.out.print("Path of the CSV file: ");
         String filename = inputScanner.nextLine().strip();
@@ -113,11 +109,9 @@ public class Chores_Main {
 
         chooseBrothers(people_list);
         
-        c_list = makeChoreList(people_list);
+        makeChoreList(people_list);
 
-
-        //TODO Format and print list
-
+        System.out.println(c_list);
 
         inputScanner.close();
     }
