@@ -9,6 +9,7 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -80,9 +81,14 @@ public class Chores_Main {
      * @param people - list of all brothers that will be resized to only those that 
      *                 will be doing chores this week
      */
-    private static void chooseBrothers(ArrayList<Person> people) {
-        //TODO
+    private static void chooseBrothers(ArrayList<Person> people, int numOfChores) { 
+        Collections.sort(people);
 
+        while(people.size() > numOfChores) {
+            people.remove(people.size() - 1);
+        }
+
+        System.out.println(people);
     }
 
     /**
@@ -100,6 +106,7 @@ public class Chores_Main {
         Scanner inputScanner = new Scanner(System.in);
 
         ArrayList<Person> people_list;
+        int numOfChores = 8;    //this number can be changed if more chores are added to weekly list
         Chores_List c_list = new Chores_List();
 
         System.out.print("Path of the CSV file: ");
@@ -107,7 +114,7 @@ public class Chores_Main {
 
         people_list = parseSheet(filename);
 
-        chooseBrothers(people_list);
+        chooseBrothers(people_list, numOfChores);
         
         makeChoreList(people_list);
 

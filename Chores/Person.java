@@ -4,7 +4,7 @@
  * Date: March 9 2022
 **/
 
-public class Person {
+public class Person implements Comparable <Person>{
     private String name;
     private int pin;
     private int empty_basement_trash;
@@ -119,6 +119,16 @@ public class Person {
     @Override
     public String toString() {
         return getName();
+    }
+
+
+    @Override
+    public int compareTo(Person o) {
+        if(totalNum == o.totalNum) {
+            return o.pin - pin;
+        } else {
+            return totalNum - o.totalNum;
+        }
     }
 
     // main to test with
