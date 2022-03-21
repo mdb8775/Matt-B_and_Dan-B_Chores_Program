@@ -91,6 +91,29 @@ public class Chores_Main {
         System.out.println(people);
     }
 
+    public static int callGetter(int i, Person p) {
+        int num = 0;
+
+        if(i == 0) {
+            num = p.getEmpty_basement_trash();
+        }else if(i == 1) {
+            num = p.getSweep_and_mop_basement();
+        }else if (i == 2) {
+            num = p.getPick_up_basement_trash();
+        }else if (i == 3) {
+            num = p.getPick_up_lounge();
+        }else if (i == 4) {
+            num = p.getLounge_vacumming();
+        }else if (i == 5) {
+            num = p.getPick_up_lounge();
+        }else if (i == 6) {
+            num = p.getKitchen_trash();
+        }else if (i == 7) {
+            num = p.getPick_up_kitchen();
+        }
+        return num;
+    }
+
     /**
      * This function takes a list of selected brothers and assigns them a chore,
      * returning the list of chores to be printed later to terminal.
@@ -98,8 +121,46 @@ public class Chores_Main {
      * @param people - list of brothers chosen for chores this week
      * @return - list of chores and the brothers assigned to them
      */
-    private static void makeChoreList(ArrayList<Person> people) {
-        //TODO list already made, just set people to list
+    private static void makeChoreList(ArrayList<Person> people, Chores_List c_list) {
+        String[] chores = {"Empty Basement Trash","Sweep and Mop Basement","Pick Up Basement",
+                            "Lounge Trash","Lounge Vacuum","Lounge Pickup","Kitchen Trash",
+                            "Kitchen Pickup"};
+
+        //For each chore, need to iterate over list of people and determine who has done chore least
+        //If multiple multiple have the minimum number, just need to compare people since lowest pin number is least
+        int min = 0;
+        Person possible;
+        
+        for(int i = 0; i < chores.length; i++) {    //loop to iterate over each chore
+            possible = people.get(0);
+            min = callGetter(i, possible);
+            
+            for(int j = 1; j < people.size(); j++) {    //loop to iterate over people            
+                Person comparePerson = people.get(j);
+                int compareNum = callGetter(i, comparePerson);
+
+                boolean needToSwap = false;
+
+                if(compareNum < min) {
+                    needToSwap = true;
+                }else if(compareNum == min) {
+                    int pinNum = possible.compareTo(comparePerson);
+                    if(pinNum > 0) {
+                        needToSwap = true;
+                    }
+                }
+
+                if(needToSwap == true) {
+                    min = compareNum;
+                    possible = comparePerson;
+                }
+                
+            }
+            //assign person to chore
+            c_list.assignChore(i, possible);
+            //remove person from list so they are not chosen again
+            people.remove(possible);
+        }
     }
 
     public static void main(String[] args) {
@@ -116,7 +177,7 @@ public class Chores_Main {
 
         chooseBrothers(people_list, numOfChores);
         
-        makeChoreList(people_list);
+        makeChoreList(people_list, c_list);
 
         System.out.println(c_list);
 

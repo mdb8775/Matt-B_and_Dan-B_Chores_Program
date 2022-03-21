@@ -57,45 +57,45 @@ public class Chores_List {
         return pick_up_kitchen;
     }
 
-    public void assignChore(String chore, Person p) {
+    public void assignChore(int i, Person p) {
         
-        switch (chore) {
-            case "Empty Basement Trash":
+        switch (i) {
+            case 0: //"Empty Basement Trash"
                 if(this.empty_basement_trash == null) {
                     this.empty_basement_trash = p;
                 }
                 break;
-            case "Sweep and Mop Basement":
+            case 1: //"Sweep and Mop Basement"
                 if(this.sweep_and_mop_basement == null) {
                     this.sweep_and_mop_basement = p;
                 }
                 break;
-            case "Pick up Basement Trash":
+            case 2: //"Pick up Basement Trash"
                 if(this.pick_up_basement_trash == null) {
                     this.pick_up_basement_trash = p;
                 }
                 break;
-            case "Lounge Vacumming":
+            case 3:    //"Lounge Vacumming"
                 if(this.lounge_vacumming == null) {
                     this.lounge_vacumming = p;
                 }
                 break;
-            case "Empty Lounge Trash":
+            case 4: //"Empty Lounge Trash"
                 if(this.empty_lounge_trash == null) {
                     this.empty_lounge_trash = p;
                 }
                 break;
-            case "Pick up Lounge":
+            case 5: //"Pick up Lounge"
                 if(this.pick_up_lounge == null) {
                     this.pick_up_lounge = p;
                 }
                 break;
-            case "Kitchen Trash":
+            case 6: //"Kitchen Trash"
                 if(this.kitchen_trash == null) {
                     this.kitchen_trash = p;
                 }
                 break;
-            case "Pick up Kitchen":
+            case 7: //"Pick up Kitchen"
                 if(this.pick_up_kitchen == null) {
                     this.pick_up_kitchen = p;
                 }
