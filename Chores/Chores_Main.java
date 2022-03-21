@@ -6,9 +6,11 @@
  * Authors: Matt Bliss and Dan Benedetti
  * Date: March 12, 2022
  */
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -19,7 +21,8 @@ public class Chores_Main {
         ArrayList<Person> list = new ArrayList<>();
 
         try {
-            FileReader fr = new FileReader(filename);
+            File file = new File(filename);
+            FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
 
             String fields = reader.readLine();
@@ -105,7 +108,7 @@ public class Chores_Main {
         Chores_List c_list;
 
         System.out.print("Path of the CSV file: ");
-        String filename = inputScanner.next();
+        String filename = inputScanner.nextLine().strip();
 
         people_list = parseSheet(filename);
 
