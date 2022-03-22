@@ -200,6 +200,7 @@ public class Chores_Main {
 
         System.out.println(c_list);
 
+        inputScanner.nextLine();
         inputScanner.close();
     }
 }
