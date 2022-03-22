@@ -91,6 +91,7 @@ public class Chores_Main {
         }
 
         System.out.println(people);
+        System.out.println();
     }
 
     /**
@@ -182,6 +183,7 @@ public class Chores_Main {
 
         System.out.print("Path of the CSV file: ");
         String filename = inputScanner.nextLine().strip();
+        System.out.println();
 
         if(filename.charAt(0) == ('\"')){
             String[] words = filename.split("\"");
